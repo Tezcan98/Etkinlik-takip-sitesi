@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+.back{
+	background-image:url("images/blue.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+
+}
+.kutular{
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+.header{
+	background-image: url("images/nevar.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+  min-height: 300px;
+	min-width: 50px;
+	margin-top: 20px;
+}
+
+kutu,label{
+	margin-top: 25px;
+	margin-bottom: 15px;
+
+}
+
+.lnk{
+	cursor:pointer;
+	text-decoration: underline;
+	float: right;
+	color: wheat;
+	margin-top: 0px;
+	margin-left: 15px;
+}
+.soru{
+	text-align: center;
+	font-size: 35px;
+	font-style: italic;
+	font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif"
+}
+.soru2{
+	font-size: 25px;
+	font-style: italic;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif"
+}
+
+
+.secenek{
+	text-align:center;
+}
+
+
+.foot{
+		background-color:gray;
+		text-align:center;
+		text-align:bottom;
+}

@@ -1,0 +1,80 @@
+@charset "utf-8";
+/* CSS Document */
+.back{
+	background-image:url("images/blue.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color:gray;
+	text-align:center;
+	text-align:bottom;
+}
+.header{
+	background-image: url("images/nevar.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	min-height: 300px;
+	min-width: 50px;
+	margin-top: 20px;  
+	cursor: pointer;
+}
+.bfrlnk{
+	color: white;
+	margin-top: 0px;
+	margin-left: 15px;
+	float: right;
+}
+.lnk{
+	cursor: pointer;
+	text-decoration: underline;
+	float: right;
+	color:	#FFDEAD;
+	margin-top: 0px;
+	margin-left: 15px;
+
+	margin-right: 50px;
+}
+.soru{
+	text-align: center;
+	font-size: 35px;
+	font-style: italic;
+	font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif"
+}
+.soru2{
+	font-size: 25px;
+	font-style: italic;
+	text-align: center;
+}
+.kutular{
+	text-align: center;
+	margin-top: 30px;
+	margin-right: 10px;
+}
+.txtbok{
+	width: 170px;
+	height: 25px;
+}
+.labels{
+	margin-top: 10px;
+	font-size: 25px;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
+	text-align: center;
+
+}
+.secenek{
+
+	text-align:center;
+}
+
+.button{
+	margin-top: 10px;
+	 font-size: 25px;
+	text-align: center;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif"
+}
+
+.foot{
+		background-color:gray;
+		text-align:center;
+		text-align:bottom;
+}
