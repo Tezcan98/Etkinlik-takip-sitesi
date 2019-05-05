@@ -7,16 +7,17 @@
 	background-size: 100% 100%;
 	background-color:gray;
 	text-align:center;
-	text-align:bottom;
 }
 .header{
-	background-image: url("images/nevar.png");
+	background-image: url("images/yeni.png");
 	background-position: center center;
 	background-repeat: no-repeat;
 	min-height: 300px;
 	min-width: 50px;
-	margin-top: 20px;  
+	margin-top: 20px;
 	cursor: pointer;
+ margin-left: 15%;
+ margin-right: 15%;
 }
 .bfrlnk{
 	color: white;
@@ -24,6 +25,21 @@
 	margin-left: 15px;
 	float: right;
 }
+
+#back{
+	float: right;
+	width: 10%;
+	background-color: red;
+}
+
+ form{
+	 margin: auto;
+	 width: 75%;
+	 border: 3px solid #73AD21;
+	  padding: 10px;
+}
+
+
 .lnk{
 	cursor: pointer;
 	text-decoration: underline;
@@ -57,8 +73,9 @@
 .labels{
 	margin-top: 10px;
 	font-size: 25px;
+	margin-left: 50px;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", "monospace";
-	text-align: center;
+
 
 }
 .secenek{
