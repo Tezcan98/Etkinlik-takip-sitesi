@@ -1,16 +1,22 @@
 <?php
 session_start();
 //conntect funct ile donmessek "Undefined variable: conn " hatasi veriyor.
+
+$msg="";
+$input="";
+
+$surname="";
+$password="";
 function connect(){
 $servername = "localhost";
-
+/*
 $username = "id8520085_tezcan";
 $password = "654321";
 $db="id8520085_sistem";
-/*
+*/
 $username = "root";
 $password = "";
-$db="etkinlik";*/
+$db="etkinlik";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$db);   //object
 
@@ -90,7 +96,7 @@ function gir($kullanici,$sifre){
        $_SESSION["interest"]=$row["interest"];
      }
 
-       header("location:etkinlikler.php");
+       header("location:etkinlikler.php?list=1");
 
      }
      else {
@@ -117,13 +123,30 @@ $sql = "INSERT INTO users (id,fname,lname,username,password,mail,interest,reg_da
 	}
 }
 
-//this is like onclick listener. select which button is clicked
-
  if ($_POST ){
     initialize_tables();
     if(isset($_POST["enter"])){
+
+      if(isset($_POST['hatirla'])){
+        setcookie("username",$_POST['uname'], time()+60*60*24);
+        setcookie("password",$_POST['psw'], time()+60*60*24);
+      }
+
    if(!gir($_POST["uname"],$_POST["psw"]))
-         echo " <p class=soru2 > Kullanici adi ya da şifreniz hatali</p>" ;
+    echo"
+    <div id='error' class='modal' style=' display : block;' >
+
+     <form class='modal-content animate' action='giris.php' method='post'>
+
+     &nbsp;
+     <h2> Kullanıcı adi ve/veya Sifre Hatali. </h2>
+
+     <input class='error' type='submit' value='Tamam'>
+
+     </form>
+
+     </div>
+    ";
   }
   else {
      if(isset($_POST["guest"]))
@@ -136,43 +159,82 @@ $sql = "INSERT INTO users (id,fname,lname,username,password,mail,interest,reg_da
             $int=$int."/".$selected;
         }
         $_SESSION["interest"]=$int;
-        header('location:etkinlikler.php');
+        header('location:etkinlikler.php?list=1');
 
       }
       else {
-        echo "En azindan birini secin.";
+          echo"
+          <div id='error' class='modal' style=' display : block;' >
+
+            <form class='modal-content animate' action='index.php' method='post'>
+
+            &nbsp;
+            <h2> En azindan birini secin.! </h2>
+
+            <input class='error' type='submit' value='Tamam'>
+
+            </form>
+
+          </div>
+          ";
+
       }
   }
   if(isset($_POST["kyt"])){
+
       if(isset($_POST["int"])){ //
           if (!empty($_POST['ad']) && !empty($_POST['soyad']) && !empty($_POST['unam']) && !empty($_POST['email']) && !empty($_POST['pas1']) && !empty($_POST['pas2'])){
              if($_POST['pas1'] == $_POST['pas2']){
-             $name=$_POST["ad"];
-             $surname=$_POST["soyad"];
-             $username=$_POST["unam"];
-             $email=$_POST["email"];
-             $password=$_POST["pas1"];
-             $int="";
-             foreach($_POST['int'] as $selected){
-                 $int=$int."/".$selected;
-              }
-              echo $int;
+                 $name=   $_POST["ad"];
+                 $surname=$_POST["soyad"];
+                 $username=$_POST["unam"];
+                 $email=$_POST["email"];
+                 $password=$_POST["pas1"];
+                 $int="";
+                 foreach($_POST['int'] as $selected){
+                     $int=$int."/".$selected;
+                 }
+            //  echo $int;
      //    add_new_user("admin123","null","admin", "tezcan","123","basket");
-              if(add_new_user($name,$surname,$username,$email,$password,$int))
-                  gir($username,$password);
+              if(add_new_user($name,$surname,$username,$email,$password,$int)){
+  //gir($username,$password);
+                  $error="Tebrikler Kayit Basarili.! &nbsp; Aramiza hosgeldiniz ". $username  ." Umarız eğlenirsiniz.";
+                  $input="devam";
+                }
             }else {
-               echo "Sifreler Ayni Olmali";
+               $error= "Sifreler Ayni Olmali";
             }
           }
           else {
-           echo "Eksik Alan var.";
+           $error="Eksik Alan var.";
           }
         }
         else {
-          echo "En azindan birini secin.";
+          $error="En azindan birini secin.";
         }
+        echo "
+        <div name='error' class='modal' style=' display : block;' >
+
+          <form class='modal-content animate' action='client.php' method='post'>
+
+          &nbsp;
+          <h2>".$error." </h2>
+          <input type='hidden' name='user' value='".$username."' >
+          <input type='hidden' name='pas' value='".$password."' >
+          <input name=".$input." class='error' type='submit' value='Giris Yap' >
+
+          </form>
+
+        </div>
+        ";
     }
 
+    if(isset($_POST["devam"])){
+      $username=$_POST["user"];
+      $password=$_POST["pas"];
+
+     gir($username,$password);
+    }
 }
 
 

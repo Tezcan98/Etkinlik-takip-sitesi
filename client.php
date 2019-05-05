@@ -1,6 +1,6 @@
 <?php
 ob_start(); include "log.php" ?>
-<!doctype html>
+<!DOCKTPYE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -18,9 +18,7 @@ ob_start(); include "log.php" ?>
 <a onclick="document.getElementById('modal-wrapper').style.display='block'" class="lnk"> Giris Yap </a> <p class="bfrlnk"> Zaten bir hesabınız var mı ? </p>
 
 <div id="modal-wrapper" class="modal">
-
   <form class="modal-content animate" action="client.php" method="post">
-
     <div class="imgcontainer">
       <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
       <img src="css/images/1.png" alt="Avatar" class="avatar">
@@ -28,17 +26,17 @@ ob_start(); include "log.php" ?>
     </div>
 
     <div class="container">
-      <input type="text" placeholder="Kullanıc Adı" name="uname" id="text">
-      <input type="password" placeholder="Sifre" name="psw" id="password">
+      <input type="text" placeholder="Kullanıc Adı" name="uname" id="text" value="<?php
+   if(isset($_COOKIE['username'])) echo $_COOKIE['username'];?>">
+      <input type="password" placeholder="Sifre" name="psw" id="password"  value="<?php
+   if(isset($_COOKIE['password'])) echo $_COOKIE['password'];
+  ?>">
       <button type="submit"  name="enter"> Giriş Yap</button>
-	 <input type="checkbox" > Beni Hatırla
-      <a href="#">Şifreni mi unuttun ?</a>
+	 <input type="checkbox" name="hatirla" > Beni Hatırla
     </div>
-
   </form>
-
-
 </div>
+
 <nav class="header" onclick="document.location.href='index.php'"></nav>
 <div class="secenek">
   <p class="soru"> Bize Kendinden Bahsetmek Ister misin ? </p>
@@ -96,7 +94,7 @@ ob_start(); include "log.php" ?>
 
 <div class="foot">
 	<p> Sistem Programlama Dersi İçin Tasarlanmıştır </p>
- 
+
 </div>
 	<script>
 // If user clicks anywhere outside of the modal, Modal will close
